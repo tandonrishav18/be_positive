@@ -149,36 +149,35 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
   return (
     <div 
       id="screen-report-result"
-      className="w-full h-full bg-[#FAF2F0] flex flex-col items-center px-5 pt-[38px] pb-3 select-none overflow-y-auto"
+      className="w-full flex-1 bg-[#FAF2F0] flex flex-col items-center px-5 pt-[22px] sm:pt-[32px] md:pt-[40px] pb-6 sm:pb-8 select-none overflow-y-auto"
     >
-      {/* 1. Near the top, centered: "Analysis Completed" at 28sp with 38px gap from Nav Bar */}
+      {/* 1. Near the top, centered: "Analysis Completed" */}
       <div 
         id="report-status-header-row"
         className="w-full flex items-center justify-center shrink-0"
       >
-        {/* Text "Analysis Completed" at 28sp on onSurface #201A19, emphasized serif, never wrapped */}
         <h1 
           id="report-analysis-complete-title"
-          className="text-[28px] leading-tight font-serif font-bold text-[#201A19] whitespace-nowrap tracking-tight text-center"
+          className="text-[28px] sm:text-[34px] md:text-[40px] lg:text-[46px] leading-tight font-serif font-bold text-[#201A19] whitespace-nowrap tracking-tight text-center"
         >
           Analysis Completed
         </h1>
       </div>
 
-      {/* Gap between Analysis Completed and White Box: Exactly 38px, matching nav bar to Analysis Completed */}
-      <div className="h-[38px] shrink-0" />
+      {/* Balanced Spacer */}
+      <div className="h-[20px] sm:h-[28px] md:h-[36px] shrink-0" />
 
-      {/* 2. In the middle: a 340×300dp box (background surfaceContainerHigh #FFFFFF, 20dp corners) */}
+      {/* 2. In the middle: result box (background surfaceContainerHigh #FFFFFF, 20dp corners) */}
       <div 
         id="report-result-box"
-        className="w-[340px] max-w-full h-[300px] bg-[#FFFFFF] rounded-[20px] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-[#E9E1DF]/50 flex flex-col items-center justify-between px-6 pt-10 pb-6 shrink-0 relative"
+        className="w-[340px] sm:w-[400px] md:w-[480px] lg:w-[540px] max-w-full h-[300px] sm:h-[340px] md:h-[380px] lg:h-[410px] bg-[#FFFFFF] rounded-[24px] md:rounded-[32px] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-[#E9E1DF]/50 flex flex-col items-center justify-between px-6 md:px-10 pt-10 md:pt-14 pb-6 md:pb-8 shrink-0 relative"
       >
         {/* Center content: Blood Group at 50sp + Accuracy at 18sp */}
         <div className="flex-1 flex flex-col items-center justify-center text-center">
           {/* Blood Group text at 50sp, black bold serif */}
           <span 
             id="report-blood-group-val"
-            className="text-[54px] leading-none font-serif font-bold text-[#1A1A1A] tracking-tight select-none"
+            className="text-[54px] sm:text-[68px] md:text-[80px] lg:text-[92px] leading-none font-serif font-bold text-[#1A1A1A] tracking-tight select-none"
           >
             {hasTestDone ? activeReport.predictedGroup : '?'}
           </span>
@@ -187,7 +186,7 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
           {hasTestDone && (
             <p 
               id="report-model-accuracy-text"
-              className="text-[19px] leading-normal font-serif font-medium text-[#1A2E35] mt-6 tracking-normal"
+              className="text-[19px] sm:text-[22px] md:text-[25px] lg:text-[28px] leading-normal font-serif font-medium text-[#1A2E35] mt-6 md:mt-8 tracking-normal"
             >
               {activeReport.confidenceScore.toFixed(1)}% Model Accuracy
             </p>
@@ -197,20 +196,20 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         {/* Near bottom of box: Pill "Predicted Blood Group" - display only, not a button */}
         <div
           id="label-predicted-blood-group"
-          className="w-full max-w-[290px] h-[54px] rounded-full bg-[#FAF0ED] text-[#7A1200] font-serif font-bold text-[18px] tracking-normal shadow-[0_3px_12px_rgba(0,0,0,0.07)] border border-[#F0DDD7] flex items-center justify-center select-none cursor-default whitespace-nowrap"
+          className="w-full max-w-[290px] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[440px] h-[54px] md:h-[62px] lg:h-[66px] rounded-full bg-[#FAF0ED] text-[#7A1200] font-serif font-bold text-[18px] sm:text-[20px] md:text-[22px] lg:text-[23px] tracking-normal shadow-[0_3px_12px_rgba(0,0,0,0.07)] border border-[#F0DDD7] flex items-center justify-center select-none cursor-default whitespace-nowrap"
         >
           Predicted Blood Group
         </div>
       </div>
 
-      {/* Gap between White Box and Blood Group Report Box: Exactly 38px */}
-      <div className="h-[38px] shrink-0" />
+      {/* Balanced Spacer */}
+      <div className="h-[20px] sm:h-[28px] md:h-[36px] shrink-0" />
 
-      {/* 3. In the middle: a filled card (208dp tall) with image from specified URL as full-bleed background */}
+      {/* 3. In the middle: a filled card with image from specified URL as full-bleed background */}
       <div 
         id="report-download-card"
         onClick={() => setIsReportModalOpen(true)}
-        className="w-[340px] max-w-full h-[208px] rounded-[20px] bg-[#FFFFFF] relative overflow-hidden shrink-0 shadow-[0_2px_12px_rgba(0,0,0,0.06)] cursor-pointer group active:scale-[0.985] transition-all select-none border border-[#D4C3BE]"
+        className="w-[340px] sm:w-[400px] md:w-[480px] lg:w-[540px] max-w-full h-[208px] sm:h-[240px] md:h-[270px] lg:h-[300px] rounded-[24px] md:rounded-[32px] bg-[#FFFFFF] relative overflow-hidden shrink-0 shadow-[0_4px_20px_rgba(0,0,0,0.06)] cursor-pointer group active:scale-[0.985] transition-all select-none border border-[#D4C3BE]"
       >
         {/* Full-bleed background image with 50% opacity */}
         <img 
@@ -224,12 +223,12 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
         {/* Text Container: Left-aligned and vertically centered directly over the paper background */}
         <div 
           id="report-card-content"
-          className="absolute inset-0 flex flex-col justify-center items-start pl-6 pr-4 z-10"
+          className="absolute inset-0 flex flex-col justify-center items-start pl-6 md:pl-10 pr-4 z-10"
         >
           {/* Headline: "BLOOD GROUP REPORT" in bold serif, uppercase */}
           <h2 
             id="report-card-headline"
-            className="text-[19px] leading-tight font-serif font-bold text-[#201A19] tracking-normal"
+            className="text-[19px] sm:text-[23px] md:text-[26px] lg:text-[30px] leading-tight font-serif font-bold text-[#201A19] tracking-normal"
           >
             BLOOD GROUP REPORT
           </h2>
@@ -237,7 +236,7 @@ export const ReportScreen: React.FC<ReportScreenProps> = ({
           {/* Body: "Download Now" in regular serif */}
           <p 
             id="report-card-body"
-            className="mt-1.5 text-[15px] leading-normal font-serif font-normal text-[#5A4D4A]"
+            className="mt-2 text-[15px] sm:text-[18px] md:text-[21px] lg:text-[23px] leading-normal font-serif font-normal text-[#5A4D4A]"
           >
             {isDownloaded ? 'View & Download Report' : 'Download Now'}
           </p>

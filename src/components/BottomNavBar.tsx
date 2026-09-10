@@ -8,14 +8,14 @@ interface BottomNavBarProps {
   reportCount?: number;
 }
 
-interface NavItem {
+export interface NavItem {
   id: NavDestination;
   label: string;
   iconName: string;
   testId: string;
 }
 
-const NAV_ITEMS: NavItem[] = [
+export const NAV_ITEMS: NavItem[] = [
   { id: 'Home', label: 'Home', iconName: 'home', testId: 'nav-home' },
   { id: 'Test', label: 'Test', iconName: 'experiment', testId: 'nav-test' },
   { id: 'Report', label: 'Report', iconName: 'draft', testId: 'nav-report' },
@@ -30,12 +30,11 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
   return (
     <nav 
       id="m3-bottom-nav-bar"
-      className="w-full bg-[#FFFFFF] flex flex-col items-center justify-start select-none z-30 shadow-[0_-2px_12px_rgba(0,0,0,0.03)] border-t border-[#FAF2F0]"
-      style={{ height: '80px' }}
+      className="md:hidden w-full bg-[#FFFFFF] flex flex-col items-center justify-center select-none z-30 shadow-[0_-2px_12px_rgba(0,0,0,0.03)] border-t border-[#FAF2F0] sticky bottom-0 h-[80px]"
       role="navigation"
       aria-label="App Navigation"
     >
-      <div className="w-full h-full flex items-center justify-around px-2">
+      <div className="w-full max-w-5xl mx-auto h-full flex items-center justify-around px-2 sm:px-8 lg:px-12">
         {NAV_ITEMS.map((item) => {
           const isActive = currentDestination === item.id;
 
@@ -44,18 +43,13 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
               key={item.id}
               id={item.testId}
               onClick={() => onSelectDestination(item.id)}
-              className="flex-1 flex flex-col items-center justify-center group cursor-pointer focus:outline-none"
-              style={{ minHeight: '64px' }}
+              className="flex-1 flex flex-col items-center justify-center group cursor-pointer focus:outline-none min-h-[64px] md:min-h-[48px]"
               aria-label={item.label}
               aria-selected={isActive}
             >
-              {/* Pill Container (64x32dp for active item) */}
+              {/* Pill Container for active item */}
               <div 
-                className="relative flex items-center justify-center transition-all duration-200"
-                style={{
-                  width: '64px',
-                  height: '32px',
-                }}
+                className="relative flex items-center justify-center transition-all duration-200 w-[64px] md:w-[56px] h-[32px] md:h-[26px]"
               >
                 {/* Active Indicator Pill */}
                 {isActive && (
@@ -77,13 +71,14 @@ export const BottomNavBar: React.FC<BottomNavBarProps> = ({
                     name={item.iconName} 
                     filled={isActive} 
                     size={24} 
+                    className="md:w-[20px] md:h-[20px]"
                   />
                 </div>
               </div>
 
               {/* Destination Label (labelMedium, Roboto Serif emphasized) */}
               <span 
-                className={`text-[12px] leading-4 mt-1 transition-all duration-200 font-serif ${
+                className={`text-[12px] md:text-[11px] leading-4 md:leading-3 mt-1 md:mt-0.5 transition-all duration-200 font-serif ${
                   isActive 
                     ? 'text-[#201A19] font-bold' 
                     : 'text-[#524440] font-normal group-hover:text-[#201A19]'

@@ -203,7 +203,7 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
   return (
     <div 
       id="screen-profile-result-copy"
-      className="flex-1 w-full h-full bg-[#FAF2F0] flex flex-col items-center justify-start px-6 pt-[38px] pb-6 select-none overflow-y-auto relative"
+      className="flex-1 w-full bg-[#FAF2F0] flex flex-col items-center justify-start px-6 pt-[22px] sm:pt-[32px] pb-6 select-none overflow-y-auto relative"
     >
       {/* Toast Notification */}
       {toastMessage && (
@@ -221,7 +221,7 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
       {/* 1. Patient Cards - Exactly matching design in image.png */}
       <div 
         id="result-copy-patient-list"
-        className="w-[340px] max-w-full flex flex-col gap-[4px] shrink-0"
+        className="w-[340px] sm:w-[400px] md:w-[480px] lg:w-[540px] max-w-full flex flex-col gap-[4px] shrink-0"
       >
         {/* Item 1: ARNAV PANDEY */}
         <div 
@@ -236,21 +236,21 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
               setIsEditDialogOpen(true);
             }
           }}
-          className="w-full h-[74px] bg-[#FFFFFF] rounded-t-[28px] rounded-b-[8px] px-[18px] flex items-center cursor-pointer active:scale-[0.99] transition-all duration-150 border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
+          className="w-full h-[74px] sm:h-[82px] md:h-[90px] lg:h-[96px] bg-[#FFFFFF] rounded-t-[28px] md:rounded-t-[34px] rounded-b-[8px] px-[18px] md:px-[24px] flex items-center cursor-pointer active:scale-[0.99] transition-all duration-150 border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
         >
-          <div className="flex items-center gap-[18px]">
+          <div className="flex items-center gap-[18px] md:gap-[22px]">
             {/* Primary circle with person icon */}
             <div 
               id="patient-icon-circle-person"
-              className="w-[44px] h-[44px] rounded-full bg-[#7A1200] flex items-center justify-center shrink-0"
+              className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] md:w-[56px] md:h-[56px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#7A1200] flex items-center justify-center shrink-0"
             >
-              <M3Icon name="person" size={22} className="text-[#FFFFFF]" />
+              <M3Icon name="person" size={24} className="text-[#FFFFFF] md:w-7 md:h-7 lg:w-8 lg:h-8" />
             </div>
 
             {/* Headline: "ARNAV PANDEY" in serif */}
             <span 
               id="patient-name-headline"
-              className="text-[17px] font-serif font-medium text-[#201A19] tracking-normal uppercase"
+              className="text-[17px] sm:text-[20px] md:text-[22px] lg:text-[24px] font-serif font-medium text-[#201A19] tracking-normal uppercase"
             >
               {patient.name || 'TAP TO ENTER NAME'}
             </span>
@@ -270,28 +270,28 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
               setIsEditDialogOpen(true);
             }
           }}
-          className="w-full h-[76px] bg-[#FFFFFF] rounded-t-[8px] rounded-b-[28px] px-[18px] flex items-center cursor-pointer active:scale-[0.99] transition-all duration-150 border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
+          className="w-full h-[76px] sm:h-[84px] md:h-[92px] lg:h-[98px] bg-[#FFFFFF] rounded-t-[8px] rounded-b-[28px] md:rounded-b-[34px] px-[18px] md:px-[24px] flex items-center cursor-pointer active:scale-[0.99] transition-all duration-150 border border-transparent shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
         >
-          <div className="flex items-center gap-[18px]">
+          <div className="flex items-center gap-[18px] md:gap-[22px]">
             {/* Primary circle with chevron_right icon */}
             <div 
               id="patient-icon-circle-chevron"
-              className="w-[44px] h-[44px] rounded-full bg-[#7A1200] flex items-center justify-center shrink-0"
+              className="w-[44px] h-[44px] sm:w-[50px] sm:h-[50px] md:w-[56px] md:h-[56px] lg:w-[60px] lg:h-[60px] rounded-full bg-[#7A1200] flex items-center justify-center shrink-0"
             >
-              <M3Icon name="chevron_right" size={24} className="text-[#FFFFFF]" />
+              <M3Icon name="chevron_right" size={26} className="text-[#FFFFFF] md:w-7 md:h-7 lg:w-8 lg:h-8" />
             </div>
 
             {/* Headline: "MALE" with supporting text "AGE : 21" */}
             <div className="flex flex-col justify-center">
               <span 
                 id="patient-gender-headline"
-                className="text-[17px] font-serif font-medium text-[#201A19] tracking-normal uppercase leading-tight"
+                className="text-[17px] sm:text-[20px] md:text-[22px] lg:text-[24px] font-serif font-medium text-[#201A19] tracking-normal uppercase leading-tight"
               >
                 {patient.gender || 'MALE'}
               </span>
               <span 
                 id="patient-age-supporting"
-                className="text-[14px] font-serif font-normal text-[#524440] tracking-normal uppercase mt-1 leading-tight"
+                className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[19px] font-serif font-normal text-[#524440] tracking-normal uppercase mt-1 leading-tight"
               >
                 {patient.age ? `AGE : ${patient.age}` : 'AGE : --'}
               </span>
@@ -300,16 +300,16 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
         </div>
       </div>
 
-      {/* 2. In the middle: 340×250dp box with 20px radius and exactly 38px gap from male age box */}
+      {/* 2. In the middle: box with 20px radius and balanced gap */}
       {/* Read-only: strictly reflects diagnostic test result; cannot be tapped or clicked to change */}
       <div 
         id="result-copy-blood-groups-box"
-        className="w-[340px] max-w-full h-[250px] bg-[#FFFFFF] rounded-[20px] shadow-[0_2px_12px_rgba(0,0,0,0.03)] border border-transparent shrink-0 flex flex-col justify-center gap-[24px] px-4 py-6 mt-[38px] select-none"
+        className="w-[340px] sm:w-[400px] md:w-[480px] lg:w-[540px] max-w-full h-[250px] sm:h-[280px] md:h-[320px] lg:h-[350px] bg-[#FFFFFF] rounded-[24px] md:rounded-[32px] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-transparent shrink-0 flex flex-col justify-center gap-[24px] md:gap-[30px] px-5 sm:px-6 md:px-8 py-6 md:py-8 mt-[24px] sm:mt-[32px] md:mt-[40px] select-none"
       >
         {/* Top Button Group: A+, A-, B+, B- as individual capsules */}
         <div 
           id="connected-button-group-top"
-          className="w-full h-[72px] flex items-center gap-[6px] shrink-0"
+          className="w-full h-[72px] sm:h-[82px] md:h-[94px] lg:h-[104px] flex items-center gap-[6px] md:gap-[10px] shrink-0"
         >
           {topRowGroups.map((group) => {
             const isSelected = activeBloodGroup === group;
@@ -318,7 +318,7 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
               <div
                 key={group}
                 id={`capsule-blood-group-${group.replace('+', 'pos').replace('-', 'neg')}`}
-                className={`flex-1 h-[72px] rounded-full flex items-center justify-center font-serif font-bold text-[18px] sm:text-[19px] transition-all duration-150 select-none cursor-default pointer-events-none ${
+                className={`flex-1 h-full rounded-full flex items-center justify-center font-serif font-bold text-[18px] sm:text-[21px] md:text-[24px] lg:text-[26px] transition-all duration-150 select-none cursor-default pointer-events-none ${
                   isSelected 
                     ? 'bg-[#7A1200] text-[#FFFFFF] shadow-sm' 
                     : 'bg-[#FAF0ED] text-[#7A1200] border border-[#E7D6D0]'
@@ -333,7 +333,7 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
         {/* Bottom Button Group: O+, O-, AB+, AB- as individual capsules */}
         <div 
           id="connected-button-group-bottom"
-          className="w-full h-[72px] flex items-center gap-[6px] shrink-0"
+          className="w-full h-[72px] sm:h-[82px] md:h-[94px] lg:h-[104px] flex items-center gap-[6px] md:gap-[10px] shrink-0"
         >
           {bottomRowGroups.map((group) => {
             const isSelected = activeBloodGroup === group;
@@ -342,7 +342,7 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
               <div
                 key={group}
                 id={`capsule-blood-group-${group.replace('+', 'pos').replace('-', 'neg')}`}
-                className={`flex-1 h-[72px] rounded-full flex items-center justify-center font-serif font-bold text-[18px] sm:text-[19px] transition-all duration-150 select-none cursor-default pointer-events-none ${
+                className={`flex-1 h-full rounded-full flex items-center justify-center font-serif font-bold text-[18px] sm:text-[21px] md:text-[24px] lg:text-[26px] transition-all duration-150 select-none cursor-default pointer-events-none ${
                   isSelected 
                     ? 'bg-[#7A1200] text-[#FFFFFF] shadow-sm' 
                     : 'bg-[#FAF0ED] text-[#7A1200] border border-[#E7D6D0]'
@@ -355,7 +355,7 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
         </div>
       </div>
 
-      {/* 3. In the middle: filled card (w-[340px]) ONLY WHEN DOWNLOADED */}
+      {/* 3. In the middle: filled card ONLY WHEN DOWNLOADED */}
       {downloadedReport && (
         <div 
           id="result-copy-blood-group-report-card"
@@ -363,7 +363,7 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
             playFeedback();
             setShowReportDialog(true);
           }}
-          className="w-[340px] max-w-full h-[150px] rounded-[20px] bg-[#FFFFFF] relative overflow-hidden shrink-0 shadow-[0_2px_10px_rgba(0,0,0,0.04)] cursor-pointer group active:scale-[0.985] transition-all duration-150 select-none border border-[#D4C3BE] mt-[38px]"
+          className="w-[340px] sm:w-[400px] md:w-[480px] lg:w-[540px] max-w-full h-[150px] sm:h-[175px] md:h-[200px] lg:h-[220px] rounded-[24px] md:rounded-[32px] bg-[#FFFFFF] relative overflow-hidden shrink-0 shadow-[0_4px_16px_rgba(0,0,0,0.04)] cursor-pointer group active:scale-[0.985] transition-all duration-150 select-none border border-[#D4C3BE] mt-[24px] sm:mt-[32px] md:mt-[40px]"
         >
           {/* Full-bleed background image with 50% opacity */}
           <img 
@@ -422,8 +422,37 @@ Status: VERIFIED_RELEASE_BUILD_SIGNED
                 <input 
                   type="text"
                   value={editName}
-                  onChange={(e) => setEditName(e.target.value)}
-                  className="w-full h-11 px-3.5 rounded-[12px] bg-[#FAF2F0] border border-[#D4C3BE] text-[14px] font-serif text-[#201A19] focus:outline-none focus:ring-2 focus:ring-[#801500]"
+                  onChange={(e) => setEditName(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
+                  onKeyDown={(e) => {
+                    if (
+                      e.key === 'Backspace' ||
+                      e.key === 'Delete' ||
+                      e.key === 'Tab' ||
+                      e.key === 'Enter' ||
+                      e.key === 'ArrowLeft' ||
+                      e.key === 'ArrowRight' ||
+                      e.key === 'ArrowUp' ||
+                      e.key === 'ArrowDown' ||
+                      e.key === 'Home' ||
+                      e.key === 'End' ||
+                      e.ctrlKey ||
+                      e.metaKey
+                    ) {
+                      return;
+                    }
+                    if (!/^[a-zA-Z\s]$/.test(e.key)) {
+                      e.preventDefault();
+                    }
+                  }}
+                  onPaste={(e) => {
+                    e.preventDefault();
+                    const text = e.clipboardData.getData('text');
+                    setEditName((prev) => (prev + text).replace(/[^a-zA-Z\s]/g, ''));
+                  }}
+                  pattern="[a-zA-Z\s]*"
+                  inputMode="text"
+                  autoComplete="name"
+                  className="w-full h-11 px-3.5 rounded-[12px] bg-[#FAF2F0] border border-[#D4C3BE] text-[14px] font-serif text-[#201A19] focus:outline-none focus:ring-2 focus:ring-[#801500] uppercase"
                   placeholder=""
                 />
               </div>

@@ -27,9 +27,9 @@ export const CollageHero: React.FC<CollageHeroProps> = ({
     <div 
       id="collage-hero-container"
       onClick={onClick}
-      className={`relative w-[348px] h-[418px] max-w-full rounded-[20px] overflow-hidden shadow-sm select-none mx-auto bg-[#E9E1DF] shrink-0 ${className}`}
+      className={`relative w-[348px] sm:w-[390px] md:w-[460px] lg:w-[500px] h-[418px] sm:h-[468px] md:h-[540px] lg:h-[580px] max-w-full rounded-[24px] overflow-hidden shadow-sm select-none mx-auto bg-[#E9E1DF] shrink-0 transition-all duration-200 ${className}`}
       style={{
-        boxShadow: '0 4px 20px rgba(138, 0, 0, 0.08)'
+        boxShadow: '0 6px 24px rgba(138, 0, 0, 0.10)'
       }}
     >
       {!loadFailed && imgSrc ? (
@@ -37,14 +37,7 @@ export const CollageHero: React.FC<CollageHeroProps> = ({
           id="hero-artwork-image"
           src={imgSrc} 
           alt="Blood Group Detection Collage" 
-          className="absolute left-0 top-[-23px] w-[348px] h-[464px] object-cover pointer-events-none select-none rounded-[20px]"
-          style={{
-            width: '348px',
-            height: '464px',
-            top: '-23px',
-            left: '0px',
-            maxWidth: 'none'
-          }}
+          className="w-full h-full object-cover object-top pointer-events-none select-none rounded-[24px]"
           referrerPolicy="no-referrer"
           onError={handleImageError}
         />

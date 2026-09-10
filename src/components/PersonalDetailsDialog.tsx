@@ -37,13 +37,58 @@ export const PersonalDetailsDialog: React.FC<PersonalDetailsDialogProps> = ({
 
   if (!isOpen) return null;
 
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Only accept alphabetic characters and spaces (disallowing numbers and special characters)
+    const sanitized = e.target.value.replace(/[^a-zA-Z\s]/g, '');
+    setName(sanitized);
+  };
+
+  const handleNameKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    // Allow navigation and editing control keys
+    if (
+      e.key === 'Backspace' ||
+      e.key === 'Delete' ||
+      e.key === 'Tab' ||
+      e.key === 'Enter' ||
+      e.key === 'ArrowLeft' ||
+      e.key === 'ArrowRight' ||
+      e.key === 'ArrowUp' ||
+      e.key === 'ArrowDown' ||
+      e.key === 'Home' ||
+      e.key === 'End' ||
+      e.ctrlKey ||
+      e.metaKey
+    ) {
+      return;
+    }
+
+    // Only allow alphabets (A-Z, a-z) and space
+    if (/^[a-zA-Z\s]$/.test(e.key)) {
+      return;
+    }
+
+    // Block numbers and all other characters
+    e.preventDefault();
+  };
+
+  const handleNamePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pasted = e.clipboardData.getData('text');
+    const sanitized = pasted.replace(/[^a-zA-Z\s]/g, '');
+    setName(prev => (prev + sanitized).replace(/[^a-zA-Z\s]/g, ''));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const cleanName = name.trim();
+    const cleanName = name.replace(/[^a-zA-Z\s]/g, '').trim();
     const cleanAge = age.trim();
 
     if (!cleanName) {
-      setErrorMsg('Please enter your name');
+      setErrorMsg('Please enter your name (alphabets only)');
+      return;
+    }
+    if (!/^[a-zA-Z\s]+$/.test(cleanName)) {
+      setErrorMsg('Name must contain only alphabets');
       return;
     }
     if (!cleanAge || isNaN(Number(cleanAge)) || Number(cleanAge) <= 0) {
@@ -113,7 +158,12 @@ export const PersonalDetailsDialog: React.FC<PersonalDetailsDialogProps> = ({
                 id="input-patient-name"
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={handleNameChange}
+                onKeyDown={handleNameKeyDown}
+                onPaste={handleNamePaste}
+                pattern="[a-zA-Z\s]*"
+                inputMode="text"
+                autoComplete="name"
                 placeholder=""
                 className="w-full h-11 px-3.5 rounded-[12px] bg-white border border-[#D4C3BE] text-[#201A19] font-serif font-bold text-[14px] focus:outline-none focus:border-[#8A0000] transition-colors shadow-2xs uppercase"
                 autoFocus
